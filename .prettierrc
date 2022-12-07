@@ -1,0 +1,12 @@
+{
+  "tabWidth": 4,
+  "useTabs": true,
+  "singleQuote": true,
+  "semi": true,
+  "printWidth": 120,
+  "arrowParens": "avoid",
+  "importOrder": ["^next(.*)$","^component/(.*)$", "^libs/(.*)$", "^helpers/(.*)$", "^[./]"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "trailingComma": "none"
+}
