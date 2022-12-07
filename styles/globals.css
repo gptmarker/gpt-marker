@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+button:has(> svg) {
+  display: none;
+}
+
+pre button {
+  visibility: hidden;
+}
+
+div:empty {
+  display: none;
+}
