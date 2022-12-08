@@ -15,7 +15,7 @@ To install GPTMarker, follow these steps:
 2. Open Chrome and visit chrome://extensions
 3. Activate Developer mode.
 4. Click on the “Load unpacked“ button
-5. Select unzipped “dist” folder and click on the "okey" button in the pop-up window
+5. Select unzipped “dist” folder and click on the "okay" button in the pop-up window
 6. GPTMarker will now be installed and ready to use!
 
 ## **Usage**
@@ -27,7 +27,7 @@ To use GPTMarker, follow these steps:
 
 ## **Support**
 
-If you encounter any issues or have any questions, please contact us at **[info@altogic.com](mailto:info@altogic.com)**. We will be happy to assist you.
+If you encounter any issues or have any questions, please contact us at **[info@gptmarker.com](mailto:info@gptmarker.com)**. We will be happy to assist you.
 
 ## **Contributions**
 
