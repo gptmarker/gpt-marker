@@ -1,33 +1,56 @@
 import Head from "next/head";
-import Image from "next/image";
 import altogic from "../lib/altogic";
-import { useEffect, useState } from "react";
 import Error from "next/error";
-import { RiHeart3Fill, RiHeart3Line } from "react-icons/ri";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import Footer from "../components/Footer";
+import { FaTwitter } from "react-icons/fa";
 
 export default function Page({ data, errorCode }) {
+  const { slug } = useRouter().query
+  function shareOnTwitter() {
+      window?.open(
+        `https://twitter.com/intent/tweet?text=${generateTwit()}`,
+        '_blank'
+      )
+  }
+  function generateTwit() {
+    const domain = 'https://gptmarker.com';
+    const link = `${domain}/${slug}/`;
+    const text = `Just had an amazing conversation with ChatGPT! 
+
+Check it out: ${link}    
+#ChatGPT @GptMarker @OpenAI`;
+
+    return encodeURIComponent(text);
+  }
+
   if (errorCode) {
     return <Error statusCode={errorCode} />;
   }
+
   return (
     <>
       <Head>
         <link rel="stylesheet" href={`${data.cssLink}`} />
-        <title>ChatGPT Bookmark - Save and share your chatgpt threads</title>
       </Head>
       <div
-        className="pb-[100px]"
+        className="pb-[125px]"
         dangerouslySetInnerHTML={{ __html: data.html }}
       />
-      <div className="fixed bottom-0 left-0 w-full dark:border-transparent bg-vert-light-gradient dark:bg-vert-dark-gradient">
+      <div className="fixed bottom-0 left-0 w-full">
+       <div className="flex justify-center py-2">
+         <button className="bg-white border gap-2 text-xs text-gray-700 flex items-center justify-center p-2 rounded" onClick={shareOnTwitter}>
+           <FaTwitter className="text-[#1d9bf0]" />
+           Share on Twitter
+         </button>
+       </div>
         <Footer />
       </div>
     </>
   );
 }
+
+
 
 export async function getServerSideProps(context) {
   const { slug } = context.params;
