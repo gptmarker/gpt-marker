@@ -10,11 +10,11 @@ export default function Support() {
               Support
             </h1>
             <p className="mt-3 text-2xl">
-              To get support for GPT Marker, join our Discord server.
+              To get support for GPTMarker, join our Discord server.
             </p>
             <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
               <a
-                href="https://discord.gg/8qZ2Yj"
+                href="https://discord.com/invite/ERK2ssumh8"
                 className="p-6 mt-6 text-left text-center border w-full lg:w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
               >
                 <div className="text-2xl justify-center gap-2 font-bold flex items-center">
