@@ -15,11 +15,10 @@ export default function Page({ data, errorCode }) {
   }
   function generateTwit() {
     const domain = 'https://www.gptmarker.com';
-    const link = `${domain}/${slug}`;
+    const link = `${domain}/${slug}/`;
     const text = `Just had an amazing conversation with ChatGPT! 
 
-Check it out: ${link}    
-#ChatGPT @GptMarker @OpenAI`;
+#ChatGPT @GptMarker @OpenAI ${link}`;
 
     return encodeURIComponent(text);
   }
