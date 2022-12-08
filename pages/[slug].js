@@ -14,7 +14,7 @@ export default function Page({ data, errorCode }) {
       )
   }
   function generateTwit() {
-    const domain = 'https://gptmarker.com';
+    const domain = 'https://www.gptmarker.com';
     const link = `${domain}/${slug}/`;
     const text = `Just had an amazing conversation with ChatGPT! 
 
