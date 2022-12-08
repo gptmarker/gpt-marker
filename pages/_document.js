@@ -14,15 +14,15 @@ export default function Document() {
         />
         <meta
           property="og:title"
-          content="ChatGPT Bookmarker - Save and share your chatgpt threads"
+          content="GPTMarker - Save and share your ChatGPT conversations"
         />
-        <meta property="og:site_name" content="ChatGPT Bookmarker" />
+        <meta property="og:site_name" content="GPTMarker" />
         <meta
           property="og:description"
           content="Save your ChatGPT threads and share with your friends."
         />
         <meta property="og:type" content="website" />
-        <meta property="twitter:title" content="GPT Marker" />
+        <meta property="twitter:title" content="GPTMarker - Save and share your ChatGPT conversations" />
         <meta
           property="twitter:description"
           content="Save your ChatGPT threads and share with your friends."
@@ -30,7 +30,7 @@ export default function Document() {
         <meta property="twitter:url" content={process.env.NEXT_PUBLIC_DOMAIN} />
         <meta property="og:url" content={process.env.NEXT_PUBLIC_DOMAIN} />
         <meta property="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@gpt-marker" />
+        <meta name="twitter:site" content="@gptmarker" />
         <meta name="twitter:creator" content="Altogic" />
       </Head>
       <body>
