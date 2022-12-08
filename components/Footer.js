@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="flex items-center w-full justify-center h-24 bg-[#75A99C]">
-      <div className="flex gap-3 flex-col items-center justify-center">
+    <footer className="flex items-center w-full justify-center h-12 bg-[#75A99C]">
+      <div className="relative flex gap-2 w-full items-center justify-center">
         <div className="flex items-center justify-center gap-4">
           <a
             href="https://twitter.com/gptmarker"
@@ -29,10 +29,10 @@ export default function Footer() {
             />
           </a>
         </div>
-        <div className="text-[14px] text-gray-700">
+        <div className="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-white/80">
           powered by{" "}
           <Link href="https://altogic.com/">
-            <a className="font-bold font-medium text-white">Altogic</a>
+            <a className="text-xs text-white">Altogic</a>
           </Link>
         </div>
       </div>
