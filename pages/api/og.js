@@ -25,7 +25,7 @@ export default async function handle(req) {
 
 	return new ImageResponse(<OgImage question={gptThread.question} answer={gptThread.answer} />, {
 		width: 800,
-		height: 400
+		height: 420
 	});
 }
 
