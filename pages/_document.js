@@ -4,6 +4,7 @@ export default function Document() {
   return (
     <Html>
       <Head>
+        <meta name="description" content="Save and share your ChatGPT conversations with Chrome Extension and improve your ChatGPT experience."/>
         <meta
           property="twitter:image"
           content={`${process.env.NEXT_PUBLIC_DOMAIN}chatgptog.png`}
@@ -16,6 +17,7 @@ export default function Document() {
           property="og:title"
           content="GPTMarker - Save and share your ChatGPT conversations"
         />
+
         <meta property="og:site_name" content="GPTMarker" />
         <meta
           property="og:description"

@@ -16,7 +16,7 @@ export default function Page({ data, errorCode }) {
   function generateTwit() {
     const domain = 'https://www.gptmarker.com';
     const link = `${domain}/${slug}/`;
-    const text = `Just had an amazing conversation with ChatGPT! 
+    const text = `Just had an amazing conversation with ChatGPT!
 
 #ChatGPT @GptMarker @OpenAI ${link}`;
 
@@ -31,6 +31,7 @@ export default function Page({ data, errorCode }) {
     <>
       <Head>
         <link rel="stylesheet" href={`${data.cssLink}`} />
+        <meta name="description" content="Save and share your ChatGPT conversations with Chrome Extension and improve your ChatGPT experience."/>
       </Head>
       <div
         className="pb-[125px]"
