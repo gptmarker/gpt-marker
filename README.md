@@ -4,8 +4,8 @@ Experimental Chrome extension that allows you to save and share your ChatGPT thr
 
 ## **Features**
 
-- Create link for your ChatGPT threads with just one click
-- Share your saved threads with others via a unique URL
+-   Create link for your ChatGPT threads with just one click
+-   Share your saved threads with others via a unique URL
 
 ## **Installation**
 
@@ -27,7 +27,7 @@ To use GPTMarker, follow these steps:
 
 ## **Support**
 
-If you encounter any issues or have any questions, please contact us at **[info@gptmarker.com](mailto:info@gptmarker.com)**. We will be happy to assist you.
+If you encounter any issues or have any questions, please contact us at **[support@gptmarker.com](mailto:support@gptmarker.com)**. We will be happy to assist you.
 
 ## **Contributions**
 

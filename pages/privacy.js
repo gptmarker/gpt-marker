@@ -17,7 +17,7 @@ const privacy = () => {
 			</p>
 			<p>
 				If you have any questions or concerns about our privacy policy, please contact us at
-				contact@gptmarker.com.
+				support@gptmarker.com.
 			</p>
 			<p>
 				By using our service, you consent to our privacy policy. This policy may be updated from time to time,
