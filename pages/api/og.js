@@ -4,7 +4,7 @@ export const config = {
 	runtime: 'experimental-edge'
 };
 
-const getGTPThread = async shareId => {
+const getGPTThread = async shareId => {
 	const res = await fetch(`${process.env.NEXT_PUBLIC_ENV_URL}/thread?shareId=${shareId}`);
 	return res.json();
 };
@@ -17,15 +17,15 @@ export default async function handle(req) {
 		return new Response('Missing slug', { status: 400 });
 	}
 
-	const gtpThread = await getGTPThread(shareId);
+	const gptThread = await getGPTThread(shareId);
 
-	if (!gtpThread) {
+	if (!gptThread) {
 		return new Response('Not found', { status: 404 });
 	}
 
-	return new ImageResponse(<OgImage question={gtpThread.question} answer={gtpThread.answer} />, {
-		width: 1200,
-		height: 627
+	return new ImageResponse(<OgImage question={gptThread.question} answer={gptThread.answer} />, {
+		width: 800,
+		height: 400
 	});
 }
 
@@ -46,7 +46,7 @@ function OgImage({ question, answer }) {
 			<div tw="flex p-8 bg-[#F7F7F8] w-full">
 				{/* eslint-disable-next-line @next/next/no-img-element */}
 				<img
-					src="https://www.gptmarker.com/chatgpt.png"
+					src={process.env.NEXT_PUBLIC_DOMAIN + 'chatgpt.png'}
 					width="48"
 					height="48"
 					alt="GPTMarker Avatar"
@@ -55,7 +55,8 @@ function OgImage({ question, answer }) {
 				<p
 					style={{
 						color: '#00G',
-						fontSize: '30px',
+						fontSize: '24px',
+						lineHeight: '36px',
 						whiteSpace: 'pre-wrap'
 					}}
 				>
@@ -65,7 +66,7 @@ function OgImage({ question, answer }) {
 			<div tw="flex pl-8 py-8 bg-[#fff] w-full ">
 				{/* eslint-disable-next-line @next/next/no-img-element */}
 				<img
-					src="https://www.gptmarker.com/chatgpt.png"
+					src={process.env.NEXT_PUBLIC_DOMAIN + 'openai.png'}
 					width="48"
 					height="48"
 					alt="GPTMarker Avatar"
@@ -74,9 +75,9 @@ function OgImage({ question, answer }) {
 				<div
 					style={{
 						color: 'black',
-						fontSize: '30px',
+						fontSize: '24px',
 						whiteSpace: 'pre-wrap',
-						lineHeight: '42px',
+						lineHeight: '36px',
 						paddingTop: '12px'
 					}}
 				>
@@ -86,7 +87,7 @@ function OgImage({ question, answer }) {
 			<div tw="flex items-center h-10 px-4 py-2 absolute bottom-0 right-0 bg-[#363543]/55 rounded-tl-md">
 				{/* eslint-disable-next-line @next/next/no-img-element */}
 				<img
-					src="https://www.gptmarker.com/chatgpt.png"
+					src={process.env.NEXT_PUBLIC_DOMAIN + 'chatgpt.png'}
 					width="16"
 					height="16"
 					alt="GPTMarker - "
