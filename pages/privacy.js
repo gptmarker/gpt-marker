@@ -1,8 +1,13 @@
 import React from 'react';
+import Head from 'next/head';
 
 export default function Privacy() {
 	return (
 		<section className="flex justify-center items-center container mx-auto px-4">
+			<Head>
+				<meta property="twitter:image" content={`${process.env.NEXT_PUBLIC_DOMAIN}chatgptog.png`} />
+				<meta property="og:image" content={`${process.env.NEXT_PUBLIC_DOMAIN}chatgptog.png`} />
+			</Head>
 			<div className="w-full lg:w-[650px] space-y-4 mt-10">
 				<h1 className="text-4xl font-medium">Privacy</h1>
 				<div className="space-y-4 text-justify">
