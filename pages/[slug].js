@@ -31,7 +31,7 @@ export default function Page({ data, errorCode }) {
     <>
       <Head>
         <link rel="stylesheet" href={`${data.cssLink}`} />
-        <meta name="description" content="Save and share your ChatGPT conversations with GPTMarker, a Chrome extension. Easily revisit past conversations and enhance your ChatGPT experience"/>
+        <meta name="description" content="Save and share your ChatGPT conversations with GPTMarker, a Chrome extension. Easily revisit past conversations and enhance your ChatGPT experience."/>
       </Head>
       <div
         className="pb-[125px]"
