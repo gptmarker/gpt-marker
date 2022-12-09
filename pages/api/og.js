@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function og() {
+export default function OGImage() {
   return (
     <div
         style={{
@@ -63,7 +63,7 @@ export default function og() {
             src="https://www.gptmarker.com/chatgpt.png"
             width="16"
             height="16"
-            alt="GPTMarker - "
+            alt="GPTMarker - Save and share your ChatGPT conversations "
             tw="rounded-sm mr-2"
           />
           <p
