@@ -1,5 +1,5 @@
 const extensionLink =
-	'https://c1-europe.altogic.com/_storage/638f4b6b895d8e153a0669f3/63906c6471a459a0fb3e0046/63931745f1d3c9db1dd933a0';
+	'https://c1-europe.altogic.com/_storage/638f4b6b895d8e153a0669f3/63906c6471a459a0fb3e0046/6396f43787a7fed4b8c70d57';
 const githubLink = 'https://github.com/gptmarker/gpt-marker';
 
 export default function Links() {
