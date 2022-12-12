@@ -5,8 +5,9 @@ import { useRouter } from 'next/router';
 import Footer from '../components/Footer';
 import { FaTwitter } from 'react-icons/fa';
 import { load } from 'cheerio';
+import GPTAvatar from '../components/GPTAvatar';
 
-export default function Page({ data, errorCode, CSSLink }) {
+export default function Page({ data, errorCode }) {
 	const { slug } = useRouter().query;
 
 	function shareOnTwitter() {
@@ -26,7 +27,33 @@ export default function Page({ data, errorCode, CSSLink }) {
 				/>
 				<meta property="og:image" content={`${process.env.NEXT_PUBLIC_DOMAIN}api/og?shareId=${data.shareId}`} />
 			</Head>
-			<link rel="stylesheet" href={CSSLink} />
+			<section className="flex flex-col items-center text-sm h-full dark:bg-[#343541] pb-14">
+				{data.threads.map((thread, index) => (
+					<div
+						key={index}
+						className={`w-full border-b border-black/10 dark:border-gray-900/50 text-[#343541] dark:text-gray-100 group ${
+							thread.from === 'human' ? 'dark:bg-gray-[#343541]' : 'bg-gray-50 dark:bg-[#444654]'
+						}`}
+					>
+						{thread.from === 'human' ? (
+							<div className="m-auto md:max-w-2xl lg:max-w-2xl xl:max-w-3xl text-base gap-6 p-4 md:py-6 flex lg:px-0">
+								<img className="w-[30px] h-[30px]" src={data.userImage} alt="user-image" />
+								<p className="min-h-[20px] whitespace-pre-wrap flex flex-col items-start gap-4">
+									{thread.content}
+								</p>
+							</div>
+						) : (
+							<div className="m-auto md:max-w-2xl lg:max-w-2xl xl:max-w-3xl text-base gap-6 p-4 md:py-6 flex lg:px-0">
+								<GPTAvatar />
+								<div
+									className="min-h-[20px] whitespace-pre-wrap flex flex-col items-start gap-4 response"
+									dangerouslySetInnerHTML={{ __html: thread.content }}
+								/>
+							</div>
+						)}
+					</div>
+				))}
+			</section>
 			<div className="pb-[125px]" dangerouslySetInnerHTML={{ __html: data.html }} />
 			<div className="fixed bottom-0 left-0 w-full">
 				<div className="flex justify-center py-2">
@@ -58,27 +85,10 @@ export async function getServerSideProps(context) {
 	const { slug } = context.params;
 
 	const { data, errors } = await altogic.db.model('gpt').filter(`shareId == ${slug}`).getSingle();
-	const CSSLink = await getCSSLink();
 	return {
 		props: {
-			data: data,
-			errorCode: !data || errors ? 404 : null,
-			CSSLink
+			data,
+			errorCode: !data || errors ? 404 : null
 		}
 	};
-}
-
-async function getCSSLink() {
-	const res = await fetch('https://chat.openai.com/chat', {
-		headers: {
-			'User-Agent':
-				'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
-		}
-	});
-	const html = await res.text();
-	const $ = load(html);
-
-	const path = $("link[rel='stylesheet']").attr('href');
-
-	return `https://chat.openai.com${path}`;
 }
