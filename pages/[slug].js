@@ -49,7 +49,7 @@ function OldVersion({ __html }) {
 
 function NewVersion({ data }) {
 	return (
-		<section className="flex flex-col items-center text-sm  dark:bg-[#343541] pb-16 lg:pb-14">
+		<section className="flex flex-col items-center text-sm min-h-full dark:bg-[#343541] pb-16 lg:pb-14">
 			{data?.threads?.map((thread, index) => (
 				<div
 					key={index}
