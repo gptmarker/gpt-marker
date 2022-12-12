@@ -23,13 +23,16 @@ export default async function handle(req) {
 		return new Response('Not found', { status: 404 });
 	}
 
-	return new ImageResponse(<OgImage question={gptThread.question} answer={gptThread.answer} />, {
-		width: 800,
-		height: 420
-	});
+	return new ImageResponse(
+		<OgImage userImage={gptThread.userImage} question={gptThread.question} answer={gptThread.answer} />,
+		{
+			width: 800,
+			height: 420
+		}
+	);
 }
 
-function OgImage({ question, answer }) {
+function OgImage({ userImage, question, answer }) {
 	return (
 		<div
 			style={{
@@ -45,13 +48,7 @@ function OgImage({ question, answer }) {
 		>
 			<div tw="flex p-8 bg-[#F7F7F8] w-full">
 				{/* eslint-disable-next-line @next/next/no-img-element */}
-				<img
-					src={process.env.NEXT_PUBLIC_DOMAIN + 'chatgpt.png'}
-					width="48"
-					height="48"
-					alt="GPTMarker Avatar"
-					tw="rounded-md mr-4 mt-4"
-				/>
+				<img src={userImage} width="48" height="48" alt="GPTMarker Avatar" tw="rounded-md mr-4 mt-4" />
 				<p
 					style={{
 						color: '#00G',
