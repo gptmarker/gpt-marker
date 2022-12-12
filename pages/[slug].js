@@ -75,6 +75,7 @@ function NewVersion({ data }) {
 					)}
 				</div>
 			))}
+			<div className="prose hidden dark:prose-invert" />
 		</section>
 	);
 }
