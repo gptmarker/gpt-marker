@@ -4,7 +4,6 @@ import Error from 'next/error';
 import { useRouter } from 'next/router';
 import Footer from '../components/Footer';
 import { FaTwitter } from 'react-icons/fa';
-import { load } from 'cheerio';
 import GPTAvatar from '../components/GPTAvatar';
 
 export default function Page({ data, errorCode }) {
@@ -27,34 +26,7 @@ export default function Page({ data, errorCode }) {
 				/>
 				<meta property="og:image" content={`${process.env.NEXT_PUBLIC_DOMAIN}api/og?shareId=${data.shareId}`} />
 			</Head>
-			<section className="flex flex-col items-center text-sm h-full dark:bg-[#343541] pb-14">
-				{data.threads.map((thread, index) => (
-					<div
-						key={index}
-						className={`w-full border-b border-black/10 dark:border-gray-900/50 text-[#343541] dark:text-gray-100 group ${
-							thread.from === 'human' ? 'dark:bg-gray-[#343541]' : 'bg-gray-50 dark:bg-[#444654]'
-						}`}
-					>
-						{thread.from === 'human' ? (
-							<div className="m-auto md:max-w-2xl lg:max-w-2xl xl:max-w-3xl text-base gap-6 p-4 md:py-6 flex lg:px-0">
-								<img className="w-[30px] h-[30px] rounded-sm" src={data.userImage} alt="user-image" />
-								<p className="min-h-[20px] whitespace-pre-wrap flex flex-col items-start gap-4">
-									{thread.content}
-								</p>
-							</div>
-						) : (
-							<div className="m-auto md:max-w-2xl lg:max-w-2xl xl:max-w-3xl text-base gap-6 p-4 md:py-6 flex lg:px-0">
-								<GPTAvatar />
-								<div
-									className="min-h-[20px] whitespace-pre-wrap flex flex-col items-start gap-4 response"
-									dangerouslySetInnerHTML={{ __html: thread.content }}
-								/>
-							</div>
-						)}
-					</div>
-				))}
-			</section>
-			<div className="pb-[125px]" dangerouslySetInnerHTML={{ __html: data.html }} />
+			{data.html ? <OldVersion __html={data.html} /> : <NewVersion data={data} />}
 			<div className="fixed bottom-0 left-0 w-full">
 				<div className="flex justify-center py-2">
 					<button
@@ -68,6 +40,42 @@ export default function Page({ data, errorCode }) {
 				<Footer />
 			</div>
 		</>
+	);
+}
+
+function OldVersion({ __html }) {
+	return <div className="pb-[125px]" dangerouslySetInnerHTML={{ __html }} />;
+}
+
+function NewVersion({ data }) {
+	return (
+		<section className="flex flex-col items-center text-sm  dark:bg-[#343541] pb-16 lg:pb-14">
+			{data?.threads?.map((thread, index) => (
+				<div
+					key={index}
+					className={`w-full border-b border-black/10 dark:border-gray-900/50 text-[#343541] dark:text-gray-100 group ${
+						thread.from === 'human' ? 'dark:bg-gray-[#343541]' : 'bg-gray-50 dark:bg-[#444654]'
+					}`}
+				>
+					{thread.from === 'human' ? (
+						<div className="m-auto md:max-w-2xl lg:max-w-2xl xl:max-w-3xl text-base gap-6 p-4 md:py-6 flex lg:px-0">
+							<img className="w-[30px] h-[30px] rounded-sm" src={data.userImage} alt="user-image" />
+							<p className="min-h-[20px] whitespace-pre-wrap flex flex-col items-start gap-4">
+								{thread.content}
+							</p>
+						</div>
+					) : (
+						<div className="m-auto md:max-w-2xl lg:max-w-2xl xl:max-w-3xl text-base gap-6 p-4 md:py-6 flex lg:px-0">
+							<GPTAvatar />
+							<div
+								className="min-h-[20px] whitespace-pre-wrap flex flex-col items-start gap-4 response"
+								dangerouslySetInnerHTML={{ __html: thread.content }}
+							/>
+						</div>
+					)}
+				</div>
+			))}
+		</section>
 	);
 }
 
