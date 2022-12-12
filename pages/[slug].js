@@ -37,7 +37,7 @@ export default function Page({ data, errorCode }) {
 					>
 						{thread.from === 'human' ? (
 							<div className="m-auto md:max-w-2xl lg:max-w-2xl xl:max-w-3xl text-base gap-6 p-4 md:py-6 flex lg:px-0">
-								<img className="w-[30px] h-[30px]" src={data.userImage} alt="user-image" />
+								<img className="w-[30px] h-[30px] rounded-sm" src={data.userImage} alt="user-image" />
 								<p className="min-h-[20px] whitespace-pre-wrap flex flex-col items-start gap-4">
 									{thread.content}
 								</p>
