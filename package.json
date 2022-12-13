@@ -12,6 +12,8 @@
     "@vercel/og": "^0.0.21",
     "altogic": "^2.3.8",
     "cheerio": "^1.0.0-rc.12",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "next": "12.3.4",
     "next-seo": "^5.15.0",
     "react": "18.2.0",

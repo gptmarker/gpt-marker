@@ -3,14 +3,37 @@ import altogic from '../lib/altogic';
 import Error from 'next/error';
 import { useRouter } from 'next/router';
 import Footer from '../components/Footer';
-import { FaTwitter } from 'react-icons/fa';
+import { FaFilePdf, FaTwitter } from 'react-icons/fa';
 import GPTAvatar from '../components/GPTAvatar';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 
 export default function Page({ data, errorCode }) {
 	const { slug } = useRouter().query;
 
 	function shareOnTwitter() {
 		window?.open(`https://twitter.com/intent/tweet?text=${generateTwit(slug)}`, '_blank');
+	}
+
+	function getPDFFileButton() {
+		// section is the div that contains the conversation
+		const section = document.querySelector('section');
+		// generate a canvas and pdf from the section
+		html2canvas(section).then(canvas => {
+			const imgData = canvas.toDataURL('image/png');
+
+			// set the height to the canvas height
+			const pixelRatio = window.devicePixelRatio;
+			window.devicePixelRatio = pixelRatio;
+			var pdf = new jsPDF(orientation, 'px', [canvas.width / pixelRatio, canvas.height / pixelRatio]);
+			pdf.addImage(imgData, 'PNG', 0, 0);
+			const orientation = canvas.width > canvas.height ? 'l' : 'p';
+			var pdfWidth = pdf.internal.pageSize.getWidth();
+			var pdfHeight = pdf.internal.pageSize.getHeight();
+			pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+
+			pdf.save(`${slug}.pdf`);
+		});
 	}
 
 	if (errorCode) {
@@ -35,6 +58,13 @@ export default function Page({ data, errorCode }) {
 					>
 						<FaTwitter className="text-[#1d9bf0]" />
 						Share on Twitter
+					</button>
+					<button
+						className="bg-white border ml-2 gap-2 text-xs text-gray-700 flex items-center justify-center p-2 rounded"
+						onClick={getPDFFileButton}
+					>
+						<FaFilePdf className="text-[#d50000]" />
+						Export to PDF
 					</button>
 				</div>
 				<Footer />
