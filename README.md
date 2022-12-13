@@ -6,6 +6,7 @@ Experimental Chrome extension that allows you to save and share your ChatGPT thr
 
 -   Create link for your ChatGPT threads with just one click
 -   Share your saved threads with others via a unique URL
+-   Export your ChatGPT conversations to PDF for easy viewing or sharing.
 
 ## **Installation**
 
