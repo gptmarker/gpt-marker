@@ -17,7 +17,7 @@ export default function Page({ data, errorCode }) {
 
 	function getPDFFileButton() {
 		// section is the div that contains the conversation
-		const section = document.querySelector('section');
+		const section = document.querySelector('body');
 		// generate a canvas and pdf from the section
 		html2canvas(section).then(canvas => {
 			const imgData = canvas.toDataURL('image/png');
@@ -25,9 +25,9 @@ export default function Page({ data, errorCode }) {
 			// set the height to the canvas height
 			const pixelRatio = window.devicePixelRatio;
 			window.devicePixelRatio = pixelRatio;
+			const orientation = canvas.width > canvas.height ? 'l' : 'p';
 			var pdf = new jsPDF(orientation, 'px', [canvas.width / pixelRatio, canvas.height / pixelRatio]);
 			pdf.addImage(imgData, 'PNG', 0, 0);
-			const orientation = canvas.width > canvas.height ? 'l' : 'p';
 			var pdfWidth = pdf.internal.pageSize.getWidth();
 			var pdfHeight = pdf.internal.pageSize.getHeight();
 			pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
